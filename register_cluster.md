@@ -13,3 +13,4 @@ helm upgrade --install \
 --set 'nodeAgent.skipKubeletTLSVerify'=true \
 suse-observability-agent suse-observability/suse-observability-agent
 
+helm uninstall suse-observability-agent -n suse-observability
