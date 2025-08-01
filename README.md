@@ -35,6 +35,39 @@ helm upgrade --install \
 kubectl get pods -A  | egrep -v 'Running|Completed'
 kubectl get pods -A --field-selector status.phase!=Running
 
+
+
+cat << EOF | suse-observability-ui-ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: suse-observability-ui
+  namespace: suse-observability
+  annotations:
+    kubernetes.io/ingress.class: traefik
+spec:
+  rules:
+  - host: stackstate.kubernerdes.lab
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: suse-observability-router
+            port:
+              number: 8080
+EOF
+kubectl apply -f suse-observability-ui-ingress.yaml
+
+grep -r passw suse-observability-*
+# Browse the UI at
+https://stackstate.kubernerdes.lab
+
+
+
+
+
 cat << EOF | tee ingress_values.yaml
 ingress:
   enabled: true
@@ -51,6 +84,7 @@ EOF
 
 kubectl get pods -A --field-selector status.phase!=Running
 
+# THIS DOESN'T WORK - WHY IS IT USING NGINX? (above)
 helm upgrade --install \
   --namespace "suse-observability" \
   --values "ingress_values.yaml" \
