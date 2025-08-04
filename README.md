@@ -35,8 +35,7 @@ helm upgrade --install \
 kubectl get pods -A  | egrep -v 'Running|Completed'
 kubectl get pods -A --field-selector status.phase!=Running
 
-
-
+# Create an ingress
 cat << EOF | suse-observability-ui-ingress.yaml
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -65,6 +64,11 @@ grep -r passw suse-observability-*
 https://stackstate.kubernerdes.lab
 
 
+# Not positive (yet) that this is needed
+
+metadata:
+  annotations:
+    traefik.ingress.kubernetes.io/router.tls.passthrough: "true"
 
 
 
