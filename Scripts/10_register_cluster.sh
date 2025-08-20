@@ -4,13 +4,14 @@ Since I am running this self-hosted in my lab
 helm repo add suse-observability https://charts.rancher.com/server-charts/prime/suse-observability
 helm repo update
 
+# I create a directory to contain all my work
+mkdir -p ~/Developer/observability.kubernerdes.lab; cd $_
+
 install_server() {
 export O11Y_LICENSE=example
 export BASEURL=observability.kubernerdes.lab
 export SIZING_PROFILE=10-nonha #trial
 
-
-mkdir ~/Developer/observability.kubernerdes.lab; cd $_
 export VALUES_DIR=.
 helm template \
   --set license="$O11Y_LICENSE" \
