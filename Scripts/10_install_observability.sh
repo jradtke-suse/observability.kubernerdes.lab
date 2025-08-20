@@ -1,11 +1,11 @@
-# Register Cluster
-
-Since I am running this self-hosted in my lab
-helm repo add suse-observability https://charts.rancher.com/server-charts/prime/suse-observability
-helm repo update
+# Deploy Observability 
 
 # I create a directory to contain all my work
-mkdir -p ~/Developer/observability.kubernerdes.lab; cd $_
+mkdir -p ~/Developer/Projects/observability.kubernerdes.lab; cd $_
+
+# Since I am running this self-hosted in my lab
+helm repo add suse-observability https://charts.rancher.com/server-charts/prime/suse-observability
+helm repo update
 
 install_server() {
 export O11Y_LICENSE=example
@@ -44,7 +44,7 @@ suse-observability-agent suse-observability/suse-observability-agent
 kubectl get all -n suse-observability
 
 # temp forward 
-kubectl port-forward service/suse-observability-suse-observability-router 8080:8080 --namespace suse-observability
+kubectl port-forward service/suse-observability-router 8080:8080 --namespace suse-observability
 
 
 # Expose App
@@ -66,10 +66,10 @@ spec:
                 name: suse-observability-router
                 port:
                   number: 8080
-  tls:
-    - hosts:
-        - observability.kubernerdes.lab
-      secretName: tls-secret
+#  tls:
+#    - hosts:
+#        - observability.kubernerdes.lab
+#      secretName: tls-secret
 EOF
 kubectl apply -f suse-observability-ingress.yaml
 
