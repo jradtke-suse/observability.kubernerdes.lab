@@ -11,3 +11,11 @@ echo "observability" | sudo tee /etc/hostname
 
 # Shutdown to update host
 sudo shutdown now -r
+
+exit 0
+
+restart() {
+
+ssh-keygen -R 10.10.15.86 -f /home/mansible/.ssh/known_hosts
+ssh-keygen -R observability.kubernerdes.lab -f /home/mansible/.ssh/known_hosts
+}
