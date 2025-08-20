@@ -8,3 +8,6 @@ sudo transactional-update register -e $EMAIL -r $REG_CODE
 
 # Set the hostname of the host
 echo "observability" | sudo tee /etc/hostname
+
+# Shutdown to update host
+sudo shutdown now -r
