@@ -22,6 +22,6 @@ observability-03   102m         2%       7528Mi          47%
 
 [Source: https://documentation.suse.com/cloudnative/suse-observability/latest/en/setup/install-stackstate/requirements.html]
 
-The reqs are reasonable considerting the product is running: 
+The reqs are reasonable considering the product is running: 
 Kafka, OTel, Hbase, Clickhouse, Elasticsearch, Prometheus, etc...
 
