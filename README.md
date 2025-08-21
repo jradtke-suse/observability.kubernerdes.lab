@@ -18,6 +18,9 @@ observability-03   102m         2%       7528Mi          47%
 ```
 23.5 GB of memory!!!  Meh, I say - but still.
 
-The product is running: 
+![Hardware Requirements](./Images/Hardware_Requirements.png)
+
+
+The reqs are reasonable considerting the product is running: 
 Kafka, OTel, Hbase, Clickhouse, Elasticsearch, Prometheus, etc...
 
