@@ -19,6 +19,7 @@ observability-03   102m         2%       7528Mi          47%
 23.5 GB of memory!!!  Meh, I say - but still.
 
 ![Hardware Requirements](./Images/Hardware_Requirements.png)
+
 [Source: https://documentation.suse.com/cloudnative/suse-observability/latest/en/setup/install-stackstate/requirements.html]
 
 The reqs are reasonable considerting the product is running: 
