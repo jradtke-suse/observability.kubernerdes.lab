@@ -1,5 +1,7 @@
 # Deploy Observability 
 
+# NOTE: the rancherUrl bits need to be tested.  CORS was added and this should fix any issues
+
 # I create a directory to contain all my work
 mkdir -p ~/Developer/Projects/observability.kubernerdes.lab; cd $_
 
