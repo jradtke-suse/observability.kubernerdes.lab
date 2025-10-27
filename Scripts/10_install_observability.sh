@@ -11,7 +11,7 @@ helm repo update
 
 install_server() {
 export O11Y_LICENSE=example
-export BASEURL=observability.kubernerdes.lab
+export BASEURL=https://observability.kubernerdes.lab
 export RANCHERURL=rancher.kubernerdes.lab
 export SIZING_PROFILE=10-nonha #trial
 
