@@ -10,9 +10,9 @@ helm repo add suse-observability https://charts.rancher.com/server-charts/prime/
 helm repo update
 
 install_server() {
-export O11Y_LICENSE=example
+[ -z $O11Y_LICENSE ] && export O11Y_LICENSE=example
 export BASEURL=https://observability.kubernerdes.lab
-export RANCHERURL=rancher.kubernerdes.lab
+export RANCHERURL=http://rancher.kubernerdes.lab
 export SIZING_PROFILE=10-nonha #trial
 
 export VALUES_DIR=.
@@ -77,10 +77,15 @@ spec:
 EOF
 kubectl apply -f suse-observability-ingress.yaml
 
+echo "  Base URL: ${suse_observability_base_url}"
+echo "  Username: admin"
+echo "  $(grep 'admin password' $(find . -name baseConfig_values.yaml))"
+echo ""
+
 exit 0
 clean_up() {
-helm uninstall suse-observability-agent -n suse-observability
+helm uninstall suse-observability-agent -n suse-observability # Client Installation
+helm uninstall suse-observability -n suse-observability       # Server Deployment
 }
-
 ###
 In summary, “SUSE Observability Trail” delivers enterprise-grade, real-time observability—while “10nonha” is a lightweight, non-HA configuration intended for smaller, less critical environments. If you expect growth or need redundancy, start with HA deployment from the beginning.
