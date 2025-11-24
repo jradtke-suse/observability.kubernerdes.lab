@@ -33,9 +33,9 @@ sudo sed -i -e '/observ/d' /etc/hosts
 cat << EOF | tee -a /etc/hosts
 
 # Rancher Nodes
-10.10.12.181    observability-01.kubernerdes.lab observability-01
-10.10.12.182    observability-02.kubernerdes.lab observability-02
-10.10.12.183    observability-03.kubernerdes.lab observability-03
+10.10.12.221    observability-01.kubernerdes.lab observability-01
+10.10.12.222    observability-02.kubernerdes.lab observability-02
+10.10.12.223    observability-03.kubernerdes.lab observability-03
 EOF
 
 # If using SL-Micro
