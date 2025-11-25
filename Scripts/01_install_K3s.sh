@@ -5,13 +5,6 @@
 # SU to root
 sudo su -
 
-# Update local hosts file
-cat << EOF | tee -a /etc/hosts
-10.10.12.221 observability-01.kubernerdes.lab observability-01
-10.10.12.222 observability-02.kubernerdes.lab observability-02
-10.10.12.223 observability-03.kubernerdes.lab observability-03
-EOF
-
 # Set some variables
 export MY_K3S_VERSION=v1.32.6+k3s1
 export MY_K3S_INSTALL_CHANNEL=v1.32
@@ -41,8 +34,7 @@ export KUBECONFIG=~/.kube/config
 openssl s_client -connect 127.0.0.1:6443 -showcerts </dev/null | openssl x509 -noout -text > cert.0
 grep DNS cert.0
 mkdir ~sles/.kube
-sudo cp /etc/rancher/k3s/k3s.yaml ~sles/.kube/config; sudo chown sles ~/.kube/config
-sudo chown -r sles ~sles/.kbue
+sudo cp /etc/rancher/k3s/k3s.yaml ~sles/.kube/config; sudo chown -R sles ~/.kube/
 
 # Replace localhost IP with the HAproxy endpoint
 sed -i -e "s/127.0.0.1/${MY_K3S_ENDPOINT}/g" $KUBECONFIG

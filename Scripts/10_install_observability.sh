@@ -34,22 +34,15 @@ helm upgrade --install \
     suse-observability/suse-observability
 }
 
+# The following is the syntax necessary to install Stackstate when you don't have valid certs
 install_client() {
-helm upgrade --install \
---namespace suse-observability \
---create-namespace \
---set-string 'stackstate.apiKey'='SERVICE_TOKEN' \
---set-string 'stackstate.cluster.name'='rancher.kubernerdes.lab' \
---set-string 'stackstate.url'='https://observability.kubernerdes.lab/receiver/stsAgent' \
---set 'nodeAgent.skipKubeletTLSVerify'=true \
-suse-observability-agent suse-observability/suse-observability-agent
+# see ../Foo/client_install.md
 }
-
+kubectl get pods -n suse-observability -w
 kubectl get all -n suse-observability
 
 # temp forward 
 kubectl port-forward service/suse-observability-router 8080:8080 --namespace suse-observability
-
 
 # Expose App
 cat << EOF | tee suse-observability-ingress.yaml
@@ -88,4 +81,4 @@ helm uninstall suse-observability-agent -n suse-observability # Client Installat
 helm uninstall suse-observability -n suse-observability       # Server Deployment
 }
 ###
-In summary, “SUSE Observability Trail” delivers enterprise-grade, real-time observability—while “10nonha” is a lightweight, non-HA configuration intended for smaller, less critical environments. If you expect growth or need redundancy, start with HA deployment from the beginning.
+In summary, “SUSE Observability Trial” delivers enterprise-grade, real-time observability—while “10nonha” is a lightweight, non-HA configuration intended for smaller, less critical environments. If you expect growth or need redundancy, start with HA deployment from the beginning.
