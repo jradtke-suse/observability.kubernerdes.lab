@@ -1,0 +1,8 @@
+# Configure users with SSH keys
+users:
+  - name: mansible 
+    groups: sudo, docker
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    shell: /bin/bash
+    ssh_authorized_keys:
+    - ssh-rsa

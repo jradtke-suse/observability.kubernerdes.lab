@@ -29,7 +29,7 @@ case $(uname -n) in
   ;;
 esac
 
-# This seems to be a K3s thing
+# This seems to be a K3s on SL-Micro thing
 shutdown now -r
 
 # Make a copy of the KUBECONFIG for non-root use
